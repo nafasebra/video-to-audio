@@ -1,21 +1,110 @@
-# bun-react-tailwind-template
+# Video to MP3 Converter
 
-To install dependencies:
+A web application that converts video files to MP3 format using FFmpeg.
 
+## Features
+
+- Upload video files (MP4, AVI, MOV, MKV, etc.)
+- Convert videos to MP3 format
+- Real-time progress tracking
+- Download converted MP3 files
+- File size validation (max 100MB)
+- Modern, responsive UI
+
+## Prerequisites
+
+- [Bun](https://bun.sh/) runtime
+- [FFmpeg](https://ffmpeg.org/) installed on your system
+- Bash shell (for running the conversion script)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd video-to-sound
+```
+
+2. Install dependencies:
 ```bash
 bun install
 ```
 
-To start a development server:
-
+3. Make sure FFmpeg is installed:
 ```bash
-bun dev
+# On Ubuntu/Debian
+sudo apt update && sudo apt install ffmpeg
+
+# On macOS
+brew install ffmpeg
+
+# On Windows
+# Download from https://ffmpeg.org/download.html
 ```
 
-To run for production:
+## Usage
 
+1. Start the development server:
 ```bash
-bun start
+bun run dev
 ```
 
-This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+2. Open your browser and navigate to `http://localhost:3000`
+
+3. Select a video file and click "Convert to MP3"
+
+4. Wait for the conversion to complete
+
+5. Download your converted MP3 file
+
+## How it Works
+
+1. **File Upload**: The frontend accepts video files through a file input
+2. **Validation**: Files are validated for type (video) and size (max 100MB)
+3. **Upload**: Video files are uploaded to the server and stored in the `uploads/` directory
+4. **Conversion**: The server uses the `convert.sh` script with FFmpeg to convert the video to MP3
+5. **Download**: Converted MP3 files are stored in the `downloads/` directory and can be downloaded
+
+## API Endpoints
+
+- `POST /api/convert` - Upload and convert a video file
+- `GET /api/download/:filename` - Download a converted MP3 file
+
+## File Structure
+
+```
+video-to-sound/
+├── src/
+│   ├── VideoConverter.tsx    # Main conversion component
+│   ├── App.tsx              # App component
+│   ├── index.tsx            # Server entry point
+│   └── index.css            # Styles
+├── uploads/                 # Temporary video files
+├── downloads/               # Converted MP3 files
+├── convert.sh              # FFmpeg conversion script
+└── package.json
+```
+
+## Conversion Script
+
+The `convert.sh` script uses FFmpeg with the following settings:
+- Audio codec: `libmp3lame`
+- Quality: `-q:a 4` (good quality, reasonable file size)
+- Video removal: `-vn` (extract audio only)
+
+## Development
+
+- `bun run dev` - Start development server with HMR
+- `bun run start` - Start production server
+- `bun run build` - Build for production
+
+## Troubleshooting
+
+1. **FFmpeg not found**: Make sure FFmpeg is installed and accessible in your PATH
+2. **Permission denied**: Ensure the `convert.sh` script is executable: `chmod +x convert.sh`
+3. **Large file uploads**: The application limits file size to 100MB for performance
+4. **Conversion fails**: Check the server logs for FFmpeg error messages
+
+## License
+
+MIT License
