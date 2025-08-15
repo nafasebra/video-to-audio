@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bun src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
-    "build": "bun run build.ts"
+    "build": "bun run build.ts",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "bun-plugin-tailwind": "^0.0.15",

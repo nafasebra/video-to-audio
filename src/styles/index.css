@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   :root {
@@ -9,7 +9,6 @@
     @apply min-w-[320px] min-h-screen m-0;
   }
 }
-
 
 @media (prefers-reduced-motion) {
   *,

@@ -14,6 +14,7 @@ A web application that converts video files to MP3 format using FFmpeg.
 ## Current Capabilities
 
 **Note**: This application currently only supports MP3 output format. The `convert.sh` script is configured to:
+
 - Extract audio from video files
 - Convert to MP3 using the `libmp3lame` codec
 - Set quality to `-q:a 4` (good quality, reasonable file size)
@@ -28,17 +29,20 @@ A web application that converts video files to MP3 format using FFmpeg.
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd video-to-sound
 ```
 
 2. Install dependencies:
+
 ```bash
 bun install
 ```
 
 3. Make sure FFmpeg is installed:
+
 ```bash
 # On Ubuntu/Debian
 sudo apt update && sudo apt install ffmpeg
@@ -53,6 +57,7 @@ brew install ffmpeg
 ## Usage
 
 1. Start the development server:
+
 ```bash
 bun run dev
 ```
@@ -96,6 +101,7 @@ video-to-sound/
 ## Conversion Script Details
 
 The `convert.sh` script uses FFmpeg with the following settings:
+
 - **Input**: Any video format supported by FFmpeg
 - **Output**: MP3 format only
 - **Audio codec**: `libmp3lame`
@@ -103,6 +109,7 @@ The `convert.sh` script uses FFmpeg with the following settings:
 - **Video removal**: `-vn` (extract audio only)
 
 ### Example FFmpeg command:
+
 ```bash
 ffmpeg -i "input_video.mp4" \
        -vn -acodec libmp3lame -q:a 4 \
@@ -126,6 +133,7 @@ ffmpeg -i "input_video.mp4" \
 ## Future Enhancements
 
 To support additional audio formats, the `convert.sh` script would need to be modified to:
+
 - Accept format parameters
 - Use different audio codecs (e.g., `libvorbis` for OGG, `aac` for M4A)
 - Adjust quality settings for different formats

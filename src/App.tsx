@@ -1,7 +1,7 @@
-import { VideoConverter } from "./components/video-converter";
-import FeaturesSection from "./components/features";
-import HeaderSection from "./components/header";
-import "./styles/index.css";
+import { VideoConverter } from './components/video-converter';
+import FeaturesSection from './components/features';
+import HeaderSection from './components/header';
+import './styles/index.css';
 
 export function App() {
   return (

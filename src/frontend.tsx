@@ -5,13 +5,12 @@
  * It is included in `src/index.html`.
  */
 
-import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import { createRoot } from 'react-dom/client';
+import { App } from './App';
 
 function start() {
-  const root = createRoot(document.getElementById("root")!);
+  const root = createRoot(document.getElementById('root')!);
   root.render(<App />);
 }
 
-document.addEventListener("DOMContentLoaded", start);
-
+document.addEventListener('DOMContentLoaded', start);
