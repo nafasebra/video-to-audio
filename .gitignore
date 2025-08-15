@@ -26,3 +26,6 @@ dist-ssr
 # misc
 uploads
 downloads
+temp_convert_*.sh
+
+
