@@ -9,6 +9,21 @@ const server = serve({
     // Serve index.html for all unmatched routes.
     "/*": index,
 
+    /**
+     * POST /api/convert
+     * 
+     * Converts uploaded video files to MP3 format
+     * 
+     * Request: FormData with "video" field containing video file
+     * Response: JSON with conversion status and download URL
+     * 
+     * Process:
+     * 1. Validates video file type and size
+     * 2. Saves video to uploads/ directory
+     * 3. Runs FFmpeg conversion using convert.sh script
+     * 4. Saves MP3 to downloads/ directory
+     * 5. Returns success response with download link
+     */
     "/api/convert": {
       async POST(req) {
         try {
@@ -105,6 +120,19 @@ const server = serve({
       },
     },
 
+    /**
+     * GET /api/download/:filename
+     * 
+     * Downloads converted MP3 files from the downloads directory
+     * 
+     * Request: GET with filename parameter in URL path
+     * Response: MP3 file as downloadable attachment
+     * 
+     * Process:
+     * 1. Validates file exists in downloads/ directory
+     * 2. Sets proper headers for MP3 download
+     * 3. Streams file content as response
+     */
     "/api/download/:filename": async req => {
       const filename = req.params.filename;
       const filePath = join(process.cwd(), "downloads", filename);
