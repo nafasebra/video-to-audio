@@ -30,10 +30,10 @@ export function VideoConverter() {
     }
 
     // Validate file size (max 100MB)
-    if (file.size > 100 * 1024 * 1024) {
+    if (file.size > 500 * 1024 * 1024) {
       setStatus({
         status: "error",
-        message: "File size must be less than 100MB"
+        message: "File size must be less than 500MB"
       });
       return;
     }
