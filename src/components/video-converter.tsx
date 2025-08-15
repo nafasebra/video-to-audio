@@ -208,7 +208,7 @@ export function VideoConverter() {
           <input
             ref={fileInputRef}
             type="file"
-            accept="video/mp4, video/avi, video/mov, video/mkv"
+            // accept="video/mp4,video/x-m4v,video/*"
             onChange={handleFileSelect}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
