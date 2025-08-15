@@ -53,11 +53,6 @@ const server = serve({
           const videoBuffer = await file.arrayBuffer();
           await writeFile(videoPath, new Uint8Array(videoBuffer));
 
-          // Debug logging
-          console.log("Original file.name:", file.name);
-          console.log("Constructed videoPath:", videoPath);
-          console.log("File exists after write:", existsSync(videoPath));
-
           // Generate output MP3 filename
           const mp3Filename = `${timestamp}_${file.name.replace(/\.[^/.]+$/, "")}.mp3`;
           const mp3Path = join(downloadsDir, mp3Filename);
@@ -69,12 +64,6 @@ const server = serve({
             .replace("{src}", videoPath)
             .replace("{dest}", mp3Path);
 
-          // Debug logging for script
-          console.log("Original script:", scriptContent);
-          console.log("Modified script:", modifiedScript);
-          console.log("Video path in script:", videoPath);
-          console.log("MP3 path in script:", mp3Path);
-
           // Write temporary script
           const tempScriptPath = join(process.cwd(), `temp_convert_${timestamp}.sh`);
           await writeFile(tempScriptPath, modifiedScript);
@@ -85,7 +74,7 @@ const server = serve({
             stderr: "pipe",
           });
 
-          const output = await new Response(proc.stdout).text();
+          // const output = await new Response(proc.stdout).text();
           const error = await new Response(proc.stderr).text();
 
           // Clean up temporary script

@@ -14,7 +14,4 @@ function start() {
 }
 
 document.addEventListener("DOMContentLoaded", start);
-// if (document.readyState === "loading") {
-// } else {
-//   start();
-// }
+

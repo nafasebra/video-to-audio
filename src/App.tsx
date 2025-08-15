@@ -1,4 +1,4 @@
-import { VideoConverter } from "./VideoConverter";
+import { VideoConverter } from "./components/VideoConverter";
 import "./index.css";
 
 export function App() {
